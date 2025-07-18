@@ -11,5 +11,6 @@ public class Fire : MonoBehaviour
     public void FireBullet(){
         GameObject SpawnBullet =  Instantiate(bullet, spawnPoint.position, spawnPoint.rotation);
         SpawnBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * bulletSpeed;
+        Destroy(SpawnBullet, 5f); // Destroy the bullet after 5 seconds
     }
 }
