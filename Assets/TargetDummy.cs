@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class TargetDummy : MonoBehaviour
 {
-    onCollisionEnter(Collision other)
+    [SerializeField] private animator dummyAnimator;
+ 
+    private void onCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("Weapon") )
         {
-            Debug.Log("Bullet hit the target dummy!");
-            // Logic to handle the bullet hitting the target dummy
-            Destroy(other.gameObject); // Destroy the bullet on impact
-            // Additional logic for damage or effects can be added here
+            duummyAnimator.SetTrigger("Death");
         }
+    }
+
+    void activateDummy()
+    {
+        dummyAnimator.SetTrigger("Activate");
     }
 }
